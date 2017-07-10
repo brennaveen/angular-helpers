@@ -1,15 +1,33 @@
 {
-    "name": "@brennaveen/angular-helpers",
-    "version": "1.0.0",
-    "description": "Collection of helpful directives and filters to extend angular",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "@brennaveen",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/brennaveen/angular-helpers"
-    },
-    "license": "MIT"
+  "name": "@brennaveen/angular-helpers",
+  "version": "1.0.0",
+  "description": "Collection of helpful directives and filters to extend angular",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+        "@brennaveen/bootstrap": "^1.0.0",
+        "angular": "^1.6.5",
+        "del": "^3.0.0",
+        "gulp": "^3.9.1",
+        "gulp-concat": "^2.6.1",
+        "run-sequence": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brennaveen/angular-helpers.git"
+  },
+  "keywords": [
+    "angular",
+    "bootstrap",
+    "google-places"
+  ],
+  "author": "Brenna Veen <brennaveen.dev@gmail.com> (https://brennaveen.wordpress.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brennaveen/angular-helpers/issues"
+  },
+  "homepage": "https://github.com/brennaveen/angular-helpers#readme"
 }
