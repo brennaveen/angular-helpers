@@ -343,7 +343,7 @@
 
     angular
         .module('bv.ngHelpers')
-        .directive('showErrors', /* @ngInject */ function (timeout, $interpolate) {
+        .directive('showErrors', /* @ngInject */ function ($timeout, $interpolate) {
             var directive = {
                 restrict: 'A',
                 require: '^form',
