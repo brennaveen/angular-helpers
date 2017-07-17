@@ -12,7 +12,7 @@
 
     angular
         .module('bv.ngHelpers')
-        .filter('titlecase', function () {
+        .filter('titlecase', /* @ngInject */ function () {
             return function (input) {
                 input = input || '';
                 return input.replace(/\w\S*/g, function (txt) {
