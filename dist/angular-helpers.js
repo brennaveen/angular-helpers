@@ -462,18 +462,25 @@
         .filter('contains', /* @ngInject */ function ($parse) {
             return function (collection, expression) {
 
-                collection = isObject(collection) ? toArray(collection) : collection;
+                collection = angular.isObject(collection) ? toArray(collection) : collection;
 
-                if (!isArray(collection) || isUndefined(expression)) {
+                if (!angular.isArray(collection) || angular.isUndefined(expression)) {
                     return false;
                 }
 
                 return collection.some(function (elm) {
-                    return ((isString(expression) && isObject(elm)) || isFunction(expression))
+                    return ((angular.isString(expression) && angular.isObject(elm)) || angular.isFunction(expression))
                         ? $parse(expression)(elm)
                         : elm === expression;
                 });
 
+                function toArray(object) {
+                    return angular.isArray(object)
+                        ? object
+                        : Object.keys(object).map(function (key) {
+                            return object[key];
+                        });
+                }
             }
         });
 
