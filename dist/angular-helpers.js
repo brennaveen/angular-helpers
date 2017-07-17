@@ -9,6 +9,34 @@
 
     /**
      * directive
+     * @name autoFocus
+     *
+     * @description
+     * Focuses element on controller initialization.
+     *
+     **/
+
+    angular
+        .module('bv.ngHelpers')
+        .directive('autoFocus', /* @ngInject */ function ($timeout) {
+            return {
+                restrict: 'AC',
+                link: function(_scope, _element) {
+                    $timeout(function(){
+                        _element[0].focus();
+                    }, 0);
+                }
+            };
+
+        });
+
+})();
+
+(function () {
+    'use strict';
+
+    /**
+     * directive
      * @name floatOnly
      *
      * @element input[ngModel]
@@ -423,6 +451,38 @@
 
     /**
      * directive
+     * @name contains
+     *
+     * @description
+     * Checks if given expression is present in one or more object in the collection
+     *
+     **/
+
+    angular.module('bv.ngHelpers', [])
+        .filter('contains', /* @ngInject */ function ($parse) {
+            return function (collection, expression) {
+
+                collection = isObject(collection) ? toArray(collection) : collection;
+
+                if (!isArray(collection) || isUndefined(expression)) {
+                    return false;
+                }
+
+                return collection.some(function (elm) {
+                    return ((isString(expression) && isObject(elm)) || isFunction(expression))
+                        ? $parse(expression)(elm)
+                        : elm === expression;
+                });
+
+            }
+        });
+
+})();
+(function () {
+    'use strict';
+
+    /**
+     * directive
      * @name titlecase
      *
      * @description
@@ -432,7 +492,7 @@
 
     angular
         .module('bv.ngHelpers')
-        .filter('titlecase', function () {
+        .filter('titlecase', /* @ngInject */ function () {
             return function (input) {
                 input = input || '';
                 return input.replace(/\w\S*/g, function (txt) {
