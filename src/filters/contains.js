@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-     * directive
+     * filter
      * @name contains
      *
      * @description
