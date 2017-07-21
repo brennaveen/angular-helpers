@@ -1,11 +1,10 @@
 {
   "name": "@brennaveen/angular-helpers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Collection of helpful directives and filters to extend angular",
   "main": "app.js",
   "dependencies": {},
   "devDependencies": {
-        "@brennaveen/bootstrap": "^1.0.0",
         "angular": "^1.6.5",
         "del": "^3.0.0",
         "gulp": "^3.9.1",
