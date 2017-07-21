@@ -450,7 +450,7 @@
     'use strict';
 
     /**
-     * directive
+     * filter
      * @name contains
      *
      * @description
@@ -458,7 +458,7 @@
      *
      **/
 
-    angular.module('bv.ngHelpers', [])
+    angular.module('bv.ngHelpers')
         .filter('contains', /* @ngInject */ function ($parse) {
             return function (collection, expression) {
 
@@ -489,7 +489,69 @@
     'use strict';
 
     /**
-     * directive
+     * filter
+     * @name tel
+     *
+     * @description
+     * Pretty print phone numbers
+     *
+     **/
+
+    angular
+        .module('bv.ngHelpers')
+        .filter('tel', /* @ngInject */ function () {
+            return function (tel) {
+                var value = tel.toString().trim().replace(/^\+/, '');
+                var country, city, number;
+
+                if (!tel) {
+                    return '';
+                }
+
+                if (value.match(/[^0-9]/)) {
+                    return tel;
+                }
+
+                switch (value.length) {
+                    case 10: // +1PPP####### -> C (PPP) ###-####
+                        country = 1;
+                        city = value.slice(0, 3);
+                        number = value.slice(3);
+                        break;
+
+                    case 11: // +CPPP####### -> CCC (PP) ###-####
+                        country = value[0];
+                        city = value.slice(1, 4);
+                        number = value.slice(4);
+                        break;
+
+                    case 12: // +CCCPP####### -> CCC (PP) ###-####
+                        country = value.slice(0, 3);
+                        city = value.slice(3, 5);
+                        number = value.slice(5);
+                        break;
+
+                    default:
+                        return tel;
+                }
+
+                if (country == 1) {
+                    country = ''
+                }
+
+                number = number.slice(0, 3) + '-' + number.slice(3);
+
+                return ((!country ? '' : country + '-') + city + "-" + number).trim();
+            };
+        });
+
+})();
+
+(function () {
+    'use strict';
+
+    /**
+     * filter
      * @name titlecase
      *
      * @description
