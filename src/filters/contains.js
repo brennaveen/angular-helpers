@@ -10,7 +10,7 @@
      *
      **/
 
-    angular.module('bv.ngHelpers', [])
+    angular.module('bv.ngHelpers')
         .filter('contains', /* @ngInject */ function ($parse) {
             return function (collection, expression) {
 
